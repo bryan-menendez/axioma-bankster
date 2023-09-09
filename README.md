@@ -1,4 +1,4 @@
-# AXIOMA-BANKING
+# AXIOMA-BANKSTER
 ========================
 
 Esta aplicacion ha sido desarrollada como una prueba tecnica de integracion de las tecnologias Python, Django, Javascript, Bootstrap 5, y Ubuntu
@@ -79,9 +79,9 @@ body: JSON.stringify({
 })
 ```
 
-Los usuarios solo tienen 3 intentos para ingresar a su cuenta. De otro modo, se bloquea.
-Los bloqueos de cuenta responden a combinaciones de IP + cuenta de la tabla axes_accessattempt.
-Responde con un codigo HTTP 200 de contenido "ok" para un ingreso exitoso, 401 para fallos de autenticacion, y 403 para errores de CORS y bloqueos de cuenta.
+Los usuarios solo tienen 3 intentos para ingresar a su cuenta. De otro modo, se bloquea.  
+Los bloqueos de cuenta responden a combinaciones de IP + cuenta de la tabla axes_accessattempt.  
+Responde con un codigo HTTP 200 de contenido "ok" para un ingreso exitoso, 401 para fallos de autenticacion, y 403 para errores de CORS y bloqueos de cuenta.  
 
 #### GET /admin/auth/user/
 
