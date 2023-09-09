@@ -103,7 +103,7 @@
                     if (response.status == 401)
                         err_container.innerHTML = "Usuario o contraseña incorrecta."
                     if (response.status == 403)
-                        window.location.href = "/";
+                        err_container.innerHTML = "Su cuenta ha sido bloqueada debido a multiples intentos fallidos de ingreso. Intent mas tarde o comuniquese con un administrador."
 
                     return response.text()
                 }).then(response => {
