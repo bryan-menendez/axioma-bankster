@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Consultar cuentas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .gray-text {
+            color: #514a4a
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">DEMO</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" style="width: 100%;">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link" href="/logout">Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row my-4">
+            <div class="row">
+                <div class="h1">Consultar cuentas</div>
+            </div>
+            <div class="row">
+                <div class="col" style="display: flex;">
+                    <div>Cuenta N° {{ user.id }} (CLP) | </div>
+                    <div style="margin-left: 4px; font-weight: 600;"><a href="/logout">SELECCIONAR OTRA CUENTA</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">Saldos y movimientos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Cartola histórica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Cartola de intereses</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body" style="background-color: #f2f2ff;">
+                            <div class="row my-3">
+                                <div class="col mb-1">
+                                    <div class="h5 card-title">
+                                        Saldo al {{ current_datetime|date:"d/m/Y H:i" }} Hrs. 
+                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                        </span>
+                                    </div> 
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary float-end"
+                                        style="background-color: white; color: rgb(32, 87, 252); border-radius: 24px; font-weight: 600;">
+                                        LIQUIDACIÓN DE INTERESES
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md">
+                                    <div class="gray-text">
+                                        Saldo disponible Cuenta Corriente
+                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div style="font-size: 26px;">
+                                        $ {{user.cliente.saldo_cta_corriente}}
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="gray-text">
+                                        Saldo disponible Línea de Crédito
+                                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div style="font-size: 26px;">
+                                        $ {{ user.cliente.saldo_linea_credito }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="row gray-text">
+                                        <div class="col">
+                                            Saldo contable:
+                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col" style="text-align: right;">
+                                            $ {{ user.cliente.saldo_contable }}
+                                        </div>
+                                    </div>
+                                    <div class="row gray-text">
+                                        <div class="col">
+                                            Retenciones 24H:
+                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col" style="text-align: right;">
+                                            $ 0
+                                        </div>
+                                    </div>
+                                    <div class="row gray-text">
+                                        <div class="col">
+                                            Retenciones 48H:
+                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col" style="text-align: right;">
+                                            $ 0
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="row gray-text">
+                                        <div class="col">
+                                            Total cargos:
+                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col" style="text-align: right;">
+                                            $ {{ user.cliente.total_cargos }}
+                                        </div>
+                                    </div>
+                                    <div class="row gray-text">
+                                        <div class="col">
+                                            Total abonos:
+                                            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Demo Tooltip">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="col" style="text-align: right;">
+                                            $ {{ user.cliente.total_abonos }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mx-2 mt-3">
+                                <div class="card" style="background-color: #0d6efd;">
+                                    <div class="card-body" style="color: white;">
+                                        <div class="row">
+                                            <div class="col-md mb-1">
+                                                <div>Tienes un crédito de consumo preaprobado por $ 14.450.000, con
+                                                    abono inmediato en tu cuenta corriente</div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <a href="#" style="color: white; float: right; font-weight: 600;">SIMULA
+                                                    AQUI</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.onload = executeOnLoad;
+        
+        function executeOnLoad(){
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        }
+    </script>
+</body>
+
+</html>
