@@ -1,4 +1,4 @@
-# AXIOMA-BANKSTER
+# AXIOMA-BANKING
 ========================
 
 Esta aplicacion ha sido desarrollada como una prueba tecnica de integracion de las tecnologias Python, Django, Javascript, Bootstrap 5, y Ubuntu
@@ -79,9 +79,13 @@ body: JSON.stringify({
 })
 ```
 
-Los usuarios solo tienen 3 intentos para ingresar a su cuenta. De otro modo, se bloquea.  
-Los bloqueos de cuenta responden a combinaciones de IP + cuenta de la tabla axes_accessattempt.  
-Responde con un codigo HTTP 200 de contenido "ok" para un ingreso exitoso, 401 para fallos de autenticacion, y 403 para errores de CORS y bloqueos de cuenta.  
+Los usuarios solo tienen 3 intentos para ingresar a su cuenta. De otro modo, se bloquea.
+Los bloqueos de cuenta responden a combinaciones de IP + cuenta de la tabla axes_accessattempt.
+Responde con un codigo HTTP 200 de contenido "ok" para un ingreso exitoso, 401 para fallos de autenticacion, y 403 para errores de CORS y bloqueos de cuenta.
+
+#### GET /logout
+
+API que deautentica al usuario. Redirecciona a "/"
 
 #### GET /admin/auth/user/
 
@@ -90,4 +94,5 @@ Para utilizar la funcion de desbloqueo de cuentas, seleccione las cuentas a desb
 
 #### GET /admin/auth/user/add/
 
-Endpoint del admin de django que permite la creacion de nuevas cuentas. Tambien se ha incluido un inline para el modelo Cliente que permite el ingreso de informacion pertinente.
+Endpoint del admin de django que permite la creacion de nuevas cuentas. Requiere autenticacion.  
+Tambien se ha incluido un inline para el modelo Cliente que permite el ingreso de informacion pertinente.
